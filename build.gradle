@@ -1,0 +1,22 @@
+plugins {
+  id 'application'
+  id 'java'
+  id 'org.openjfx.javafxplugin' version '0.0.8'
+}
+
+group 'com.gmail.jakesaddress.jmazev2'
+mainClassName = 'com.gmail.jakesaddress.jmazev2.Main'
+version '1.0-SNAPSHOT'
+
+dependencies {
+
+}
+
+javafx {
+  version = "15"
+  modules = [ 'javafx.controls', 'javafx.fxml', 'javafx.graphics' ]
+}
+
+repositories {
+  mavenCentral()
+}
