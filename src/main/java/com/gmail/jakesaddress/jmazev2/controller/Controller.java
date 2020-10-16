@@ -15,30 +15,26 @@
  * along with jMazeV2.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.gmail.jakesaddress.jmazev2.ui;
+package com.gmail.jakesaddress.jmazev2.controller;
 
-import com.gmail.jakesaddress.jmazev2.controller.Controller;
-import javafx.scene.layout.BorderPane;
+import com.gmail.jakesaddress.jmazev2.maze.Maze;
+import com.gmail.jakesaddress.jmazev2.ui.MazeMain;
 
-public class MazeMain extends BorderPane {
+public class Controller {
 
-  private final MazeMenu mazeMenu;
-  private final MazePane mazePane;
+  private final Maze maze;
+  private final MazeMain mazeMain;
 
-  public MazeMain(MazeMenu mazeMenu, MazePane mazePane) {
-    this.mazeMenu = mazeMenu;
-    this.setTop(mazeMenu);
-
-    this.mazePane = mazePane;
-    this.setCenter(mazePane);
+  public Controller(Maze maze, MazeMain mazeMain) {
+    this.maze = maze;
+    this.mazeMain = mazeMain;
+    mazeMain.setController(this);
+    mazeMain.getCanvas().drawMaze(maze);
   }
 
-  public MazeCanvas getCanvas() {
-    return mazePane.getMazeCanvas();
-  }
-
-  public void setController(Controller controller) {
-    mazeMenu.setController(controller);
+  public void newMaze() {
+    maze.generate();
+    mazeMain.getCanvas().drawMaze(maze);
   }
 
 }

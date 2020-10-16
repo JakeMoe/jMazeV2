@@ -17,6 +17,7 @@
 
 package com.gmail.jakesaddress.jmazev2;
 
+import com.gmail.jakesaddress.jmazev2.controller.Controller;
 import com.gmail.jakesaddress.jmazev2.maze.Maze;
 import com.gmail.jakesaddress.jmazev2.ui.MazeMain;
 import com.gmail.jakesaddress.jmazev2.ui.MazeMenu;
@@ -27,13 +28,17 @@ import javafx.stage.Stage;
 
 public class Main extends Application {
 
+  private final Maze maze = new Maze(20, 20);
+  final private MazeMain mazeMain = new MazeMain(new MazeMenu(), new MazePane());
+  private final Controller controller = new Controller(maze, mazeMain);
+
   public static void main(String[] args) {
     launch(args);
   }
 
   @Override
   public void start(Stage primaryStage) throws Exception {
-    Scene scene = new Scene(new MazeMain(new MazeMenu(), new MazePane()));
+    Scene scene = new Scene(mazeMain);
     primaryStage.setScene(scene);
     primaryStage.setTitle("jMaze V2");
     primaryStage.show();

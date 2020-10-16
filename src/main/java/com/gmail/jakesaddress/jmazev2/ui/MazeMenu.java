@@ -17,6 +17,7 @@
 
 package com.gmail.jakesaddress.jmazev2.ui;
 
+import com.gmail.jakesaddress.jmazev2.controller.Controller;
 import javafx.application.Platform;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
@@ -25,16 +26,14 @@ import javafx.scene.control.SeparatorMenuItem;
 
 public class MazeMenu extends MenuBar {
 
+  private Controller controller;
+
   public MazeMenu() {
     MenuItem fileNewMenuItem = new MenuItem("New");
-    fileNewMenuItem.setOnAction((ae) -> {
-      // generate new maze
-    });
+    fileNewMenuItem.setOnAction(ae -> controller.newMaze());
 
     MenuItem fileCloseMenuItem = new MenuItem("Close");
-    fileCloseMenuItem.setOnAction((ae) -> {
-      Platform.exit();
-    });
+    fileCloseMenuItem.setOnAction(ae -> Platform.exit());
 
     Menu fileMenu = new Menu("File");
     fileMenu.getItems().add(fileNewMenuItem);
@@ -49,5 +48,10 @@ public class MazeMenu extends MenuBar {
     this.getMenus().add(editMenu);
     this.getMenus().add(helpMenu);
   }
+
+  public void setController(Controller controller) {
+    this.controller = controller;
+  }
+
 
 }

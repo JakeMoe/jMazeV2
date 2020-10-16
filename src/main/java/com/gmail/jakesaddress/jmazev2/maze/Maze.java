@@ -33,7 +33,7 @@ public class Maze {
     WEST
   }
 
-  public Maze(int Cols, int Rows, int CellSize, int Padding) {
+  public Maze(int Cols, int Rows) {
     this.cols = Cols;
     this.rows = Rows;
 
@@ -60,7 +60,7 @@ public class Maze {
     return cells;
   }
 
-  protected void generate() {
+  public void generate() {
     cells = new MazeCell[cols][rows];
     for (int col = 0; col < cols; col++) {
       for (int row = 0; row < rows; row++) {

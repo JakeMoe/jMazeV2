@@ -24,8 +24,8 @@ public class MazeCell {
   private boolean southWall;
   private boolean visited;
   private boolean westWall;
-  private int col;
-  private int row;
+  private final int col;
+  private final int row;
 
   public MazeCell(int col, int row) {
     this.eastWall = true;

@@ -17,6 +17,7 @@
 
 package com.gmail.jakesaddress.jmazev2.ui;
 
+import com.gmail.jakesaddress.jmazev2.maze.Maze;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
@@ -42,11 +43,9 @@ public class MazeCanvas extends Canvas {
 
     this.mazeCols = cols;
     this.mazeRows = rows;
-
-    drawMaze();
   }
 
-  private void drawMaze() {
+  public void drawMaze(Maze maze) {
 
     gc.setFill(backgroundColor);
     gc.setLineWidth(1);
@@ -56,16 +55,16 @@ public class MazeCanvas extends Canvas {
 
     for (int col = 0; col < mazeCols; col++) {
       for (int row = 0; row < mazeRows; row++) {
-        if (cells[col][row].hasEastWall()) {
+        if (maze.getCells()[col][row].hasEastWall()) {
           gc.strokeLine(padding + ((col + 1) * cellSize), padding + (row * cellSize), padding + ((col + 1) * cellSize), padding + ((row + 1) * cellSize));
         }
-        if (cells[col][row].hasNorthWall()) {
+        if (maze.getCells()[col][row].hasNorthWall()) {
           gc.strokeLine(padding + (col * cellSize), padding + (row * cellSize), padding + ((col + 1) * cellSize), padding + (row * cellSize));
         }
-        if (cells[col][row].hasSouthWall()) {
+        if (maze.getCells()[col][row].hasSouthWall()) {
           gc.strokeLine(padding + (col * cellSize), padding + ((row + 1) * cellSize), padding + ((col + 1) * cellSize), padding + ((row + 1) * cellSize));
         }
-        if (cells[col][row].hasWestWall()) {
+        if (maze.getCells()[col][row].hasWestWall()) {
           gc.strokeLine(padding + (col * cellSize), padding + (row * cellSize), padding + (col * cellSize), padding + ((row + 1) * cellSize));
         }
       }

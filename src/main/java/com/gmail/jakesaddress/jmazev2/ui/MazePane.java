@@ -17,12 +17,11 @@
 
 package com.gmail.jakesaddress.jmazev2.ui;
 
-import javafx.scene.canvas.Canvas;
 import javafx.scene.layout.Pane;
 
 public class MazePane extends Pane {
 
-  private final Canvas mazeCanvas;
+  private final MazeCanvas mazeCanvas;
 
   public MazePane() {
     this(20, 20, 20, 10);
@@ -31,6 +30,10 @@ public class MazePane extends Pane {
   public MazePane(int cols, int rows, int cellSize, int padding) {
     mazeCanvas = new MazeCanvas(cols, rows, cellSize, padding);
     this.getChildren().add(mazeCanvas);
+  }
+
+  public MazeCanvas getMazeCanvas() {
+    return mazeCanvas;
   }
 
 }
